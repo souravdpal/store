@@ -2,12 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let allProducts = [];
 
     // Fetch Data from JSONBin.io (external URL)
-    fetch("https://api.jsonbin.io/v3/b/67df0a0b8561e97a50f0ebe5") // Your public JSONBin URL
+    fetch("https://api.jsonbin.io/v3/b/67df0a0b8561e97a50f0ebe5") // Replace with your bin's raw URL
         .then(response => response.json())
         .then(data => {
             console.log("Fetched Data:", data);  // Log the fetched data to the console
 
-            // Since the data is an array, we can directly use it
+            // Directly use the fetched data (assuming it's an array)
             allProducts = data;  // If the data is already an array
             loadProducts(allProducts);
             document.getElementById("loading").style.display = "none"; // Hide loading
