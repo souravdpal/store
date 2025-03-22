@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopZone - Products</title>
+    <link rel="stylesheet" href="/frontend/css/pr.css">
+</head>
+<body>
+
+    <!-- Styled Navbar -->
+    <nav class="navbar">
+        <div class="logo">ShopZone</div>
+        <ul class="nav-links">
+            <li><a href="/frontend/index.html">Home</a></li>
+            <li><a href="/p.html">Products</a></li>
+            <li><a href="/frontend/about.html">About Us</a></li>
+            <li><a href="/frontend/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Discover the Best Deals</h1>
+        <p>Handpicked Amazon deals to save you time & money.</p>
+    </header>
+
+    <!-- Product Filter -->
+    <section class="filter-container">
+        <label for="categoryFilter">Filter by Category:</label>
+        <select id="categoryFilter">
+            <option value="all">All</option>
+            <option value="electronics">Electronics</option>
+            <option value="clothing">Clothing</option>
+            <option value="home">Home & Kitchen</option>
+        </select>
+    </section>
+
+    <!-- Product List -->
+    <section class="products-container" id="product-list">
+        <!-- Products will be loaded dynamically -->
+    </section>
+
+    <div id="loading">Loading Products...</div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 ShopZone. All rights reserved.</p>
+    </footer>
+
+    <script src="p.js"></script>
+</body>
+</html>

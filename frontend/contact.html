@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HINA ~By sourav</title>
+    <link rel="stylesheet" href="/frontend/css/c.css">
+</head>
+<body>
+   <div>
+    <nav class="nav">
+        <ul class="lk1">~WELCOME TO HINA:</ul>
+        <ul class="navul"><a class="lk" href="/frontend/index.html">HOME</a></ul>
+        <ul class="navul"><a class="lk" href="/frontend/contact.html">CONTACT</a></ul>
+        <ul class="navul"><a class="lk" href="/frontend/about.html">ABOUT ME</a></ul>
+    </nav>
+   </div>
+   <section>
+        <h2 class="contact-heading">Get in Touch</h2>
+        <form action="#" method="POST" class="contact-form">
+            <label for="fullName" class="contact-label">Your Name</label>
+            <input type="text" id="fullName" name="fullName" class="contact-input" placeholder="Enter your name" required>
+
+            <label for="emailAddress" class="contact-label">Email Address</label>
+            <input type="email" id="emailAddress" name="emailAddress" class="contact-input" placeholder="Enter your email" required>
+
+            <label for="userMessage" class="contact-label">Your Message</label>
+            <textarea id="userMessage" name="userMessage" class="contact-textarea" rows="4" placeholder="Write your message" required></textarea>
+
+            <button type="submit" class="contact-btn">Send Message</button>
+        </form>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="/frontend/js/c.js"></script>
+</body>
+</html>
