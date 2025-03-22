@@ -1,5 +1,5 @@
 const CLIENT_ID = "Ov23liIMDUZRFuXpMq2L";  // Replace with your actual Client ID
-const REDIRECT_URI = "https://souravdpal.github.io/store/github-callback";
+const REDIRECT_URI = "https://souravdpal.github.io/store/frontend/index1.html";
 const SCOPE = "user repo";
 const STATE = "randomState";  
 
