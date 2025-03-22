@@ -4,7 +4,7 @@
 const CLIENT_ID = "Ov23liT4idGmRG2Tf8Sx"; 
 
 // ✅ Make sure this matches your GitHub OAuth app settings
-const REDIRECT_URI = "https://souravdpal.github.io/store/index1.html";
+const REDIRECT_URI = "https://souravdpal.github.io/store/home.html";
 
 // ✅ Debugging logs (Check these in browser console F12)
 console.log("GitHub OAuth | Client ID:", CLIENT_ID);
