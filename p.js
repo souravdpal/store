@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             console.log("Fetched Data:", data);  // Log the fetched data to the console
 
-            // Directly use the fetched data (assuming it's an array)
-            allProducts = data;  // If the data is already an array
+            // Access the products from the 'record' field
+            allProducts = data.record || [];  // If data has a 'record' field, use it. Else, use an empty array.
             loadProducts(allProducts);
             document.getElementById("loading").style.display = "none"; // Hide loading
         })
