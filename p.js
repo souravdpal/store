@@ -5,8 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("https://api.jsonbin.io/v3/b/67df0a0b8561e97a50f0ebe5") // Replace with your bin's raw URL
         .then(response => response.json())
         .then(data => {
-            // Access products from the data (assuming it's an object with a `products` array)
-            allProducts = data.record || data;  // Adjusting to access the correct data format
+            allProducts = data;  // Directly use the fetched data since it's already an array
             loadProducts(allProducts);
             document.getElementById("loading").style.display = "none"; // Hide loading
         })
