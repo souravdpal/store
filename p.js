@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     let allProducts = [];
 
-    // Fetch Data
-    fetch("data.json")
+    // Fetch Data from JSONBin.io (external URL)
+    fetch("https://api.jsonbin.io/v3/b/67df0a0b8561e97a50f0ebe5") // Replace with your bin's raw URL
         .then(response => response.json())
         .then(data => {
             allProducts = data;
