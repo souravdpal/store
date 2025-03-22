@@ -2,10 +2,13 @@ document.addEventListener("DOMContentLoaded", function () {
     let allProducts = [];
 
     // Fetch Data from JSONBin.io (external URL)
-    fetch("https://api.jsonbin.io/v3/b/67df0a0b8561e97a50f0ebe5") // Replace with your bin's raw URL
+    fetch("https://api.jsonbin.io/v3/b/67df0a0b8561e97a50f0ebe5") // Your public JSONBin URL
         .then(response => response.json())
         .then(data => {
-            allProducts = data;  // Directly use the fetched data since it's already an array
+            console.log("Fetched Data:", data);  // Log the fetched data to the console
+
+            // Since the data is an array, we can directly use it
+            allProducts = data;  // If the data is already an array
             loadProducts(allProducts);
             document.getElementById("loading").style.display = "none"; // Hide loading
         })
@@ -16,18 +19,23 @@ document.addEventListener("DOMContentLoaded", function () {
         const productContainer = document.getElementById("product-list");
         productContainer.innerHTML = "";
 
-        products.forEach(product => {
-            let productHTML = `
-                <div class="product-card">
-                    <img src="${product.img}" alt="${product.name}">
-                    <h3>${product.name}</h3>
-                    <p><strong>Price:</strong> ${product.price}</p>
-                    <p class="rating">⭐ ${product.rating}</p>
-                    <a href="${product.link}" target="_blank" class="buy-btn">Buy Now</a>
-                </div>
-            `;
-            productContainer.innerHTML += productHTML;
-        });
+        // Check if products is an array and then iterate through it
+        if (Array.isArray(products)) {
+            products.forEach(product => {
+                let productHTML = `
+                    <div class="product-card">
+                        <img src="${product.img}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <p><strong>Price:</strong> ${product.price}</p>
+                        <p class="rating">⭐ ${product.rating}</p>
+                        <a href="${product.link}" target="_blank" class="buy-btn">Buy Now</a>
+                    </div>
+                `;
+                productContainer.innerHTML += productHTML;
+            });
+        } else {
+            console.error("Fetched data is not an array:", products);
+        }
     }
 
     // Category Filter
