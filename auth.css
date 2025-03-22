@@ -1,0 +1,104 @@
+/* General Page Styles */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #0D0D0D;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+/* Authentication Box */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.auth-box {
+    background: #1E1E1E;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    width: 350px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.auth-box:hover {
+    transform: scale(1.05);
+}
+
+.auth-box h2 {
+    margin-bottom: 10px;
+}
+
+.auth-box p {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* Google Button */
+.google-btn {
+    background: white;
+    color: black;
+}
+
+.google-btn:hover {
+    background: #f1f1f1;
+    transform: scale(1.05);
+}
+
+/* GitHub Button */
+.github-btn {
+    background: #161b22;
+    color: white;
+    margin-top: 10px;
+}
+
+.github-btn img {
+    width: 20px;
+    height: 20px;
+    filter: invert(1); /* Make GitHub logo white */
+}
+
+.github-btn:hover {
+    background: #24292e;
+    transform: scale(1.05);
+}
+
+/* Subtle Animation */
+.auth-box {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
