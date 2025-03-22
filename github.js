@@ -1,7 +1,7 @@
 // 🔥 GitHub OAuth - Frontend Only (No Backend Required)
 
 // ✅ Replace this with your actual GitHub Client ID
-const CLIENT_ID = "Ov23liRTmWBwk7ezelkO"; 
+const CLIENT_ID = "Ov23liT4idGmRG2Tf8Sx"; 
 
 // ✅ Make sure this matches your GitHub OAuth app settings
 const REDIRECT_URI = "https://souravdpal.github.io/store/index1.html";
