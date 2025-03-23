@@ -46,7 +46,12 @@ document.addEventListener("DOMContentLoaded", async function () {
                         <span>${announcement.message}</span>
                         ${announcement.link ? `<a href="${announcement.link}" class="announcement-link">Shop Now</a>` : ""}
                     `;
-                    announcementBanner.style.display = "block";
+                    // Add a small delay to ensure the style is applied after other scripts
+                    setTimeout(() => {
+                        announcementBanner.style.display = "block";
+                        console.log("Announcement Banner Display Style After Setting:", announcementBanner.style.display);
+                        console.log("Computed Display Style:", window.getComputedStyle(announcementBanner).display);
+                    }, 100); // 100ms delay
                 };
 
                 // Display the initial random announcement
