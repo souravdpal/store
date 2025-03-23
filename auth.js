@@ -1,6 +1,6 @@
-// Import necessary Firebase modules
+// Import Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -16,17 +16,33 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
 
-// Google Auth Function
+// Google Authentication
+const googleProvider = new GoogleAuthProvider();
 document.querySelector(".google-btn").addEventListener("click", () => {
-    signInWithPopup(auth, provider)
+    signInWithPopup(auth, googleProvider)
         .then((result) => {
-            console.log("User signed in:", result.user);
+            console.log("Google User:", result.user);
             alert(`Welcome, ${result.user.displayName}`);
-            window.location.href = "https://souravdpal.github.io/store/home.html";  // Redirect to GitHub Pages URL
+            window.location.href = "https://souravdpal.github.io/store/home.html";  // Redirect to home
         })
         .catch((error) => {
-            console.error("Error during Google sign-in:", error);
+            console.error("Google Sign-in Error:", error);
+            alert("Google Login Failed!");
+        });
+});
+
+// GitHub Authentication
+const githubProvider = new GithubAuthProvider();
+document.querySelector(".github-btn").addEventListener("click", () => {
+    signInWithPopup(auth, githubProvider)
+        .then((result) => {
+            console.log("GitHub User:", result.user);
+            alert(`Welcome, ${result.user.displayName}`);
+            window.location.href = "https://souravdpal.github.io/store/home.html";  // Redirect to home
+        })
+        .catch((error) => {
+            console.error("GitHub Sign-in Error:", error);
+            alert("GitHub Login Failed!");
         });
 });
