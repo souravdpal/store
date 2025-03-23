@@ -1,43 +1,41 @@
-// Announcement functionality
+// Announcement and Featured Products functionality
 document.addEventListener("DOMContentLoaded", async function () {
     let allAnnouncements = [];
+    let allProducts = [];
     const announcementBanner = document.getElementById("announcementBanner");
     const announcementContent = document.getElementById("announcementContent");
     const announcementClose = document.getElementById("announcementClose");
+    const featuredProductsContainer = document.getElementById("featuredProducts");
 
     // Debug: Check if DOM elements are found
     console.log("DOM Elements:", {
         announcementBanner,
         announcementContent,
-        announcementClose
+        announcementClose,
+        featuredProductsContainer
     });
 
     // Check if the announcement has been dismissed
     const isDismissed = localStorage.getItem("announcementDismissed");
     console.log("Is Announcement Dismissed:", isDismissed);
 
+    // Fetch Announcements
     if (!isDismissed) {
         try {
-            // Fetch announcements from the provided URL
             const response = await fetch("https://raw.githubusercontent.com/souravdpal/data.json/master/announcements.json");
             if (!response.ok) throw new Error("Failed to fetch announcements");
             const data = await response.json();
             console.log("Fetched Announcements:", data);
 
-            // Ensure the data is an array
             allAnnouncements = Array.isArray(data) ? data : [];
             console.log("All Announcements:", allAnnouncements);
 
-            // If there are announcements, proceed with display
             if (allAnnouncements.length > 0) {
                 let currentIndex = 0;
-
-                // Random Announcement on Initial Load
                 const randomIndex = Math.floor(Math.random() * allAnnouncements.length);
-                currentIndex = randomIndex; // Start with a random announcement
+                currentIndex = randomIndex;
                 console.log("Random Initial Index:", currentIndex);
 
-                // Function to display the current announcement
                 const displayAnnouncement = () => {
                     const announcement = allAnnouncements[currentIndex];
                     console.log("Displaying Announcement:", announcement);
@@ -46,18 +44,15 @@ document.addEventListener("DOMContentLoaded", async function () {
                         <span>${announcement.message}</span>
                         ${announcement.link ? `<a href="${announcement.link}" class="announcement-link">Shop Now</a>` : ""}
                     `;
-                    // Add a small delay to ensure the style is applied after other scripts
                     setTimeout(() => {
                         announcementBanner.style.display = "block";
                         console.log("Announcement Banner Display Style After Setting:", announcementBanner.style.display);
                         console.log("Computed Display Style:", window.getComputedStyle(announcementBanner).display);
-                    }, 100); // 100ms delay
+                    }, 100);
                 };
 
-                // Display the initial random announcement
                 displayAnnouncement();
 
-                // Cycle Through Announcements Every 5 Seconds
                 setInterval(() => {
                     currentIndex = (currentIndex + 1) % allAnnouncements.length;
                     displayAnnouncement();
@@ -69,7 +64,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             console.error("Error fetching announcements:", error);
         }
 
-        // Close button functionality
         announcementClose.addEventListener("click", () => {
             console.log("Closing announcement banner.");
             announcementBanner.style.display = "none";
@@ -77,5 +71,37 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     } else {
         console.log("Announcement dismissed, not showing banner.");
+    }
+
+    // Fetch Featured Products
+    try {
+        const response = await fetch("https://raw.githubusercontent.com/souravdpal/data.json/master/data.json");
+        if (!response.ok) throw new Error("Failed to fetch products");
+        const data = await response.json();
+        console.log("Fetched Products:", data);
+
+        allProducts = Array.isArray(data) ? data : [];
+        console.log("All Products:", allProducts);
+
+        // Display up to 3 featured products
+        const featuredProducts = allProducts.slice(0, 3); // Take the first 3 products
+        featuredProducts.forEach((product, index) => {
+            const card = document.createElement("div");
+            card.className = "product-card fade-in";
+            card.style.animationDelay = `${index * 0.1}s`;
+
+            card.innerHTML = `
+                <img src="${product.img}" alt="${product.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/150';">
+                <h3>${product.name}</h3>
+                <p><strong>Price:</strong> ${product.price}</p>
+                <p class="rating">⭐ ${product.rating}</p>
+                <a href="${product.link}" target="_blank" class="buy-btn" aria-label="Buy ${product.name} for ${product.price}">Buy Now</a>
+            `;
+
+            featuredProductsContainer.appendChild(card);
+        });
+    } catch (error) {
+        console.error("Error fetching featured products:", error);
+        featuredProductsContainer.innerHTML = `<p class="error-message">Failed to load featured products.</p>`;
     }
 });
