@@ -6,6 +6,18 @@ document.addEventListener("DOMContentLoaded", async function () {
     const announcementContent = document.getElementById("announcementContent");
     const announcementClose = document.getElementById("announcementClose");
     const featuredProductsContainer = document.getElementById("featuredProducts");
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+
+    // Exchange rate: 1 USD = 83 INR (approximate as of early 2025)
+    const EXCHANGE_RATE = 83;
+
+    // Toggle Hamburger Menu
+    hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        hamburger.querySelector("i").classList.toggle("fa-bars");
+        hamburger.querySelector("i").classList.toggle("fa-times");
+    });
 
     // Debug: Check if DOM elements are found
     console.log("DOM Elements:", {
@@ -14,9 +26,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         announcementClose,
         featuredProductsContainer
     });
-
-    // Temporary: Clear the announcementDismissed flag for testing (remove after testing)
-    localStorage.removeItem("announcementDismissed");
 
     // Check if the announcement has been dismissed
     const isDismissed = localStorage.getItem("announcementDismissed");
@@ -78,14 +87,24 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Fetch Featured Products
     try {
-        // Updated URL to the correct branch (main instead of master)
-        const response = await fetch("https://raw.githubusercontent.com/souravdpal/data.json/main/data.json");
+        // Updated URL to use the master branch
+        const response = await fetch("https://raw.githubusercontent.com/souravdpal/data.json/master/data.json");
         if (!response.ok) throw new Error("Failed to fetch products");
         const data = await response.json();
         console.log("Fetched Products:", data);
 
         allProducts = Array.isArray(data) ? data : [];
         console.log("All Products:", allProducts);
+
+        // Convert prices to rupees and add rupeePrice field
+        allProducts = allProducts.map(product => {
+            const priceInDollars = parseFloat(product.price.replace(/[^0-9.-]+/g, ""));
+            const priceInRupees = priceInDollars * EXCHANGE_RATE;
+            return {
+                ...product,
+                rupeePrice: priceInRupees.toFixed(2)
+            };
+        });
 
         // Display up to 3 featured products
         const featuredProducts = allProducts.slice(0, 3); // Take the first 3 products
@@ -97,9 +116,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             card.innerHTML = `
                 <img src="${product.img}" alt="${product.name}" onerror="this.onerror=null;this.src='https://picsum.photos/150?random=${index + 3}';">
                 <h3>${product.name}</h3>
-                <p><strong>Price:</strong> ${product.price}</p>
+                <p><strong>Price:</strong> ₹${product.rupeePrice}</p>
                 <p class="rating">⭐ ${product.rating}</p>
-                <a href="${product.link}" target="_blank" class="buy-btn" aria-label="Buy ${product.name} for ${product.price}">Buy Now</a>
+                <a href="${product.link}" target="_blank" class="buy-btn" aria-label="Buy ${product.name} for ₹${product.rupeePrice}">Buy Now</a>
             `;
 
             featuredProductsContainer.appendChild(card);
