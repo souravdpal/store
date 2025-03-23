@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Affiliate Store</title>
-     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
     <link rel="icon" type="image/png" href="icon.png">
-
 </head>
 <body>
 
@@ -34,38 +33,48 @@
     </header>
 
     <!-- Featured Products -->
-    <section class="container">
+    <section class="featured-products">
         <h2>Featured Products</h2>
-        <div class="product-list">
-            <div class="product">
-                <img src="https://m.media-amazon.com/images/I/71OFKtclW4L._SX679_.jpg" alt="Product Image">
+        <div class="featured-list">
+            <div class="featured-product">
+                <img src="https://m.media-amazon.com/images/I/71OFKtclW4L._SX679_.jpg" alt="Gigabyte NVIDIA GeForce RTX Graphics Card" onclick="openModal('https://m.media-amazon.com/images/I/71OFKtclW4L._SX679_.jpg')">
                 <h3>GIGABYTE NVIDIA GeForce RTX</h3>
-                <a href="https://www.amazon.in/GIGABYTE-WINDFORCE-pci_e_x16-Graphics-GV-N3060WF2OC-12GD/dp/B0BNP2CMXM/ref=sr_1_1?crid=2VBBMHOLO0QI1&dib=eyJ2IjoiMSJ9.5fwlmdC-kzL84Xcy7EBqYSN1NGwb20CBI2j8Rr72IZW1TYlx3ddzIlMf0yifV0cjnZ4gy4EflHNweHzUimfio8sRhoH-49lVGUkecx31Even87r9T3tHJ1knl-4lBvGu0sruiNM1tEMo7uU1LQWvsS_CR7kN3MKaPF7Wd9Ujn4yMyYRnczQghhVu8ZodCuvnNb4Twqg3PxuU8IAo6lyouDNIUjkGUFXSvfzDjqiKfJk.s3N4aeU-YFksldz6K2HC2_rzm9gdnjA6Xx4IM3xNkWU&dib_tag=se&keywords=rtx+3060+graphic+card&qid=1742728965&sprefix=rtx+3%2Caps%2C410&sr=8-1" class="buy-btn">Buy Now</a>
+                <p>$599</p>
+                <a href="https://www.amazon.in/GIGABYTE-WINDFORCE-pci_e_x16-Graphics-GV-N3060WF2OC-12GD/dp/B0BNP2CMXM/ref=sr_1_1?crid=2VBBMHOLO0QI1&dib=eyJ2IjoiMSJ9.5fwlmdC-kzL84Xcy7EBqYSN1NGwb20CBI2j8Rr72IZW1TYlx3ddzIlMf0yifV0cjnZ4gy4EflHNweHzUimfio8sRhoH-49lVGUkecx31Even87r9T3tHJ1knl-4lBvGu0sruiNM1tEMo7uU1LQWvsS_CR7kN3MKaPF7Wd9Ujn4yMyYRnczQghhVu8ZodCuvnNb4Twqg3PxuU8IAo6lyouDNIUjkGUFXSvfzDjqiKfJk.s3N4aeU-YFksldz6K2HC2_rzm9gdnjA6Xx4IM3xNkWU&dib_tag=se&keywords=rtx+3060+graphic+card&qid=1742728965&sprefix=rtx+3%2Caps%2C410&sr=8-1" class="featured-buy-btn" aria-label="Buy Gigabyte NVIDIA GeForce RTX for $599">Buy Now</a>
             </div>
-            <div class="product">
-                <img src="product.jpg" alt="Product Image">
+            <div class="featured-product">
+                <img src="product.jpg" alt="Product Image" onclick="openModal('product.jpg')">
                 <h3>Product Name</h3>
-                <a href="#" class="buy-btn">Buy Now</a>
+                <p>$499</p>
+                <a href="#" class="featured-buy-btn" aria-label="Buy Product Name for $499">Buy Now</a>
             </div>
         </div>
     </section>
 
+    <!-- Modal Structure -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">×</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
     <!-- About Us Section -->
-<div class="about-us">
-    <h2>About Us</h2>
-    <p>We handpick the best Amazon deals to save you time and money.</p>
-    <a href="about.html" class="learn-more">Learn More</a>
-</div>
+    <div class="about-us">
+        <h2>About Us</h2>
+        <p>We handpick the best Amazon deals to save you time and money.</p>
+        <a href="about.html" class="learn-more">Learn More</a>
+    </div>
 
-<!-- Contact Us Section -->
-<div class="contact-us">
-    <h2>Contact Us</h2>
-    <p>Have questions? We’d love to hear from you!</p>
-    <a href="contact.html" class="contact-btn">Get in Touch</a>
-</div>
-
+    <!-- Contact Us Section -->
+    <div class="contact-us">
+        <h2>Contact Us</h2>
+        <p>Have questions? We’d love to hear from you!</p>
+        <a href="contact.html" class="contact-btn">Get in Touch</a>
+    </div>
 
     <!-- Footer -->
     <footer>
         <p>© 2024 Affiliate Store. All rights reserved.</p>
     </footer>
+
+</body>
+</html>
