@@ -69,7 +69,13 @@ body {
     position: relative;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     animation: slideDown 0.5s ease-in-out;
-    z-index: 999;
+    z-index: 1001; /* Increased to be above the navbar */
+    margin-top: 60px; /* Adjusted to appear below the fixed navbar */
+}
+
+/* Force display when JavaScript sets display: block */
+.announcement-banner[style*="display: block"] {
+    display: block !important;
 }
 
 .announcement-content {
@@ -219,5 +225,10 @@ footer {
 
     .hero p {
         font-size: 1rem;
+    }
+
+    /* Adjust the announcement banner margin on mobile */
+    .announcement-banner {
+        margin-top: 120px; /* Adjusted for mobile navbar height */
     }
 }
