@@ -1,12 +1,72 @@
-/* General Page Styles */
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
+    font-family: 'Poppins', sans-serif; /* Match the font of the other pages */
+    background: #f4f6f9; /* Match the background color of the other pages */
+    color: #222831; /* Match the text color of the other pages */
+}
+
+/* Navbar */
+.navbar {
+    background: #4C89F3; /* Match the navbar color of the other pages */
+    padding: 15px 20px;
+    position: fixed; /* Match the fixed navbar of the other pages */
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 12px;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+    background: #FFCC29; /* Match the hover color of the other pages */
+    color: #222831;
+    box-shadow: 0px 2px 6px rgba(255, 204, 41, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Authentication Section */
+.auth-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: #0D0D0D;
-    font-family: 'Poppins', sans-serif;
-    color: white;
+    min-height: calc(100vh - 60px); /* Adjust for fixed navbar */
+    padding: 100px 20px 50px; /* Extra padding-top for navbar, bottom for footer */
 }
 
 /* Authentication Box */
@@ -14,30 +74,37 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    width: 100%;
 }
 
 .auth-box {
-    background: #1E1E1E;
+    background: linear-gradient(145deg, #f9f9f9, #e8ecef); /* Match the gradient background of the other pages */
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 350px;
-    transition: transform 0.3s ease-in-out;
+    width: 100%;
+    max-width: 350px;
+    transition: all 0.3s ease-in-out;
+    animation: fadeIn 0.5s ease-in-out; /* Match the animation of the other pages */
 }
 
 .auth-box:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Match the hover effect of the other pages */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .auth-box h2 {
+    font-size: 2rem;
+    color: #222831; /* Match the text color of the other pages */
     margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .auth-box p {
     font-size: 14px;
-    opacity: 0.7;
+    color: #555; /* Match the secondary text color of the other pages */
     margin-bottom: 20px;
 }
 
@@ -53,63 +120,56 @@ button {
     font-size: 16px;
     font-weight: bold;
     border: none;
-    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+    position: relative;
 }
 
 /* Google Button */
 .google-btn {
-    background: white;
-    color: black;
+    background: #4C89F3; /* Match the primary color of the other pages */
+    color: white;
 }
 
 .google-btn:hover {
-    background: #f1f1f1;
+    background: #FFCC29; /* Match the hover color of the other pages */
+    color: #222831;
     transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(255, 204, 41, 0.4);
 }
 
 /* GitHub Button */
 .github-btn {
-    background: #161b22;
+    background: #4C89F3; /* Match the primary color of the other pages */
     color: white;
     margin-top: 10px;
-}
-
-.github-btn img {
-    width: 20px;
-    height: 20px;
-    filter: invert(1); /* Make GitHub logo white */
 }
 
 .github-btn:hover {
-    background: #24292e;
+    background: #FFCC29; /* Match the hover color of the other pages */
+    color: #222831;
     transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(255, 204, 41, 0.4);
 }
 
-/* Facebook Button */
-.facebook-btn {
-    background: #1877F2;
-    color: white;
-    margin-top: 10px;
+/* Disabled Button State */
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
-.facebook-btn img {
-    width: 20px;
-    height: 20px;
-    filter: invert(1);
+/* Loading Spinner */
+.loading-spinner {
+    position: absolute;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-.facebook-btn:hover {
-    background: #145dbf;
-    transform: scale(1.05);
-}
-
-/* Subtle Animation */
-.auth-box {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
+/* Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -118,5 +178,38 @@ button {
     to {
         opacity: 1;
         transform: scale(1);
+    }
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #222831; /* Match the footer background of the other pages */
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+        position: static; /* Remove fixed positioning for mobile to avoid overlap */
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .auth-box {
+        width: 95%;
     }
 }
