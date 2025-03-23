@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const loadingElement = document.getElementById("loading");
     const categoryFilter = document.getElementById("categoryFilter");
 
-    // Fetch Data from GitHub
+    // Fetch Data from GitHub JSON
     async function fetchProducts() {
         try {
             const response = await fetch("https://raw.githubusercontent.com/souravdpal/data.json/master/data.json");
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             card.style.animationDelay = `${index * 0.1}s`; // staggered animation effect
 
             card.innerHTML = `
-                <img src="${product.img}" alt="${product.name}">
+                <img src="${product.img}" alt="${product.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/150';">
                 <h3>${product.name}</h3>
                 <p><strong>Price:</strong> ${product.price}</p>
                 <p class="rating">⭐ ${product.rating}</p>
