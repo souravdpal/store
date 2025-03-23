@@ -7,15 +7,15 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f4f6f9; /* Match the background color of the first page */
-    color: #222831; /* Match the text color of the first page */
+    background-color: #f4f6f9;
+    color: #222831;
 }
 
 /* Navbar */
 .navbar {
-    background: #4C89F3; /* Match the navbar color of the first page */
+    background: #4C89F3;
     padding: 15px 20px;
-    position: fixed; /* Match the fixed navbar of the first page */
+    position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
@@ -53,7 +53,7 @@ body {
 }
 
 .navbar ul li a:hover {
-    background: #FFCC29; /* Match the hover color of the first page */
+    background: #FFCC29;
     color: #222831;
     box-shadow: 0px 2px 6px rgba(255, 204, 41, 0.6);
     transform: translateY(-2px);
@@ -61,16 +61,16 @@ body {
 
 /* Hero */
 .hero {
-    background: linear-gradient(135deg, #4C89F3, #1E3A5F); /* Match the hero gradient of the first page */
+    background: linear-gradient(135deg, #4C89F3, #1E3A5F);
     color: white;
-    padding: 120px 20px; /* Match the padding of the first page */
+    padding: 120px 20px;
     text-align: center;
     border-radius: 0 0 30px 30px;
-    animation: fadeIn 1s ease-in-out; /* Match the animation of the first page */
+    animation: fadeIn 1s ease-in-out;
 }
 
 .hero h1 {
-    font-size: 2.5rem; /* Match the font size of the first page */
+    font-size: 2.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -83,19 +83,63 @@ body {
 .filter-container {
     text-align: center;
     margin: 30px 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.category-filter, .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-filter label, .search-bar label {
+    font-size: 16px;
+    color: #222831;
 }
 
 #categoryFilter {
     padding: 10px 15px;
     font-size: 16px;
     border-radius: 8px;
-    border: 2px solid #4C89F3; /* Match the border color with the navbar */
+    border: 2px solid #4C89F3;
     outline: none;
     transition: 0.3s ease;
 }
 
 #categoryFilter:focus {
-    border-color: #FFCC29; /* Match the focus color with the hover color */
+    border-color: #FFCC29;
+}
+
+.search-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#searchInput {
+    padding: 10px 40px 10px 15px; /* Extra padding on the right for the icon */
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid #4C89F3;
+    outline: none;
+    transition: 0.3s ease;
+    width: 250px;
+}
+
+#searchInput:focus {
+    border-color: #FFCC29;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    color: #4C89F3;
+    font-size: 18px;
+    pointer-events: none; /* Prevent the icon from being clickable */
 }
 
 /* Products Grid */
@@ -110,7 +154,7 @@ body {
 
 /* Product Card */
 .product-card {
-    background: linear-gradient(145deg, #f9f9f9, #e8ecef); /* Match the gradient background of the first page */
+    background: linear-gradient(145deg, #f9f9f9, #e8ecef);
     padding: 25px 20px;
     border-radius: 15px;
     text-align: center;
@@ -125,31 +169,31 @@ body {
 
 .product-card img {
     width: 100%;
-    max-width: 150px; /* Slightly larger than the original to match the first page */
+    max-width: 150px;
     height: auto;
     object-fit: contain;
     margin-bottom: 15px;
-    border: 2px solid #ddd; /* Add a subtle border to make the image pop */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow */
+    border: 2px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
-    cursor: pointer; /* Indicate the image is clickable */
+    cursor: pointer;
 }
 
 .product-card img:hover {
-    transform: scale(1.1); /* Slight zoom on hover */
-    filter: brightness(1.1); /* Slightly brighten the image on hover */
+    transform: scale(1.1);
+    filter: brightness(1.1);
 }
 
 .product-card h3 {
     font-size: 20px;
     margin-bottom: 8px;
-    color: #222831; /* Match the text color of the first page */
+    color: #222831;
 }
 
 .product-card p {
     font-size: 16px;
-    color: #555; /* Match the secondary text color of the first page */
+    color: #555;
 }
 
 .rating {
@@ -161,10 +205,10 @@ body {
 /* Buy Button */
 .buy-btn {
     display: inline-block;
-    background: #4C89F3; /* Match the button color of the first page */
+    background: #4C89F3;
     color: white;
     padding: 10px 20px;
-    border-radius: 8px; /* Match the border-radius of the first page */
+    border-radius: 8px;
     font-weight: bold;
     margin-top: 12px;
     transition: all 0.3s ease-in-out;
@@ -172,7 +216,7 @@ body {
 }
 
 .buy-btn:hover {
-    background: #FFCC29; /* Match the hover color of the first page */
+    background: #FFCC29;
     color: #222831;
     transform: scale(1.05);
     box-shadow: 0px 4px 8px rgba(255, 204, 41, 0.4);
@@ -180,14 +224,14 @@ body {
 
 /* Modal Styles */
 .modal {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
     z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
+    background-color: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
 }
@@ -209,7 +253,7 @@ body {
 }
 
 .close:hover {
-    color: #FFCC29; /* Match the hover color of the first page */
+    color: #FFCC29;
 }
 
 /* Animation */
@@ -241,7 +285,7 @@ body {
 footer {
     text-align: center;
     padding: 20px;
-    background: #222831; /* Match the footer background of the first page */
+    background: #222831;
     color: white;
     margin-top: 20px;
     border-top-left-radius: 20px;
@@ -253,7 +297,7 @@ footer {
     .navbar {
         flex-direction: column;
         text-align: center;
-        position: static; /* Remove fixed positioning for mobile to avoid overlap */
+        position: static;
     }
 
     .navbar ul {
@@ -263,6 +307,16 @@ footer {
     }
 
     .product-card img {
-        max-width: 120px; /* Smaller image on mobile */
+        max-width: 120px;
+    }
+
+    .filter-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #searchInput {
+        width: 100%;
+        max-width: 300px;
     }
 }
