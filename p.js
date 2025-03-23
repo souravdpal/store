@@ -1,26 +1,30 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
     let allProducts = [];
+    const productContainer = document.getElementById("product-list");
+    const loadingElement = document.getElementById("loading");
+    const categoryFilter = document.getElementById("categoryFilter");
 
-    // Fetch Data (Unchanged)
-    fetch("https://api.jsonbin.io/v3/b/67df0a0b8561e97a50f0ebe5")
-        .then(response => response.json())
-        .then(data => {
+    // Fetch Data from GitHub
+    async function fetchProducts() {
+        try {
+            const response = await fetch("https://raw.githubusercontent.com/souravdpal/data.json/master/data.json");
+            if (!response.ok) throw new Error("Failed to fetch products");
+            const data = await response.json();
             console.log("Fetched Data:", data);
-            allProducts = data.record || [];
+            allProducts = Array.isArray(data) ? data : [];
             loadProducts(allProducts);
-            document.getElementById("loading").style.display = "none";
-        })
-        .catch(error => {
+            loadingElement.style.display = "none";
+        } catch (error) {
             console.error("Error loading products:", error);
-            document.getElementById("loading").innerText = "Failed to load products.";
-        });
+            loadingElement.innerText = "Failed to load products.";
+        }
+    }
 
     // Load Products (with fade-in animation)
     function loadProducts(products) {
-        const productContainer = document.getElementById("product-list");
         productContainer.innerHTML = "";
 
-        if (!Array.isArray(products) || products.length === 0) {
+        if (products.length === 0) {
             productContainer.innerHTML = `<p class="error-message">No products found.</p>`;
             return;
         }
@@ -28,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         products.forEach((product, index) => {
             const card = document.createElement("div");
             card.className = "product-card fade-in";
-            card.style.animationDelay = `${index * 0.1}s`; // delay animation for staggered effect
+            card.style.animationDelay = `${index * 0.1}s`; // staggered animation effect
 
             card.innerHTML = `
                 <img src="${product.img}" alt="${product.name}">
@@ -43,11 +47,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Filter by category
-    document.getElementById("categoryFilter").addEventListener("change", function () {
+    categoryFilter.addEventListener("change", function () {
         const selectedCategory = this.value;
-        const filtered = selectedCategory === "all"
+        const filteredProducts = selectedCategory === "all"
             ? allProducts
-            : allProducts.filter(p => p.category === selectedCategory);
-        loadProducts(filtered);
+            : allProducts.filter(product => product.category.toLowerCase() === selectedCategory.toLowerCase());
+        loadProducts(filteredProducts);
     });
+
+    // Fetch products on page load
+    fetchProducts();
 });
