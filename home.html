@@ -3,72 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Affiliate Store</title>
-     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-    <link rel="icon" type="image/png" href="icon.png">
-
+    <title>Product Page</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">Affiliate Store</div>
-            <ul class="nav-links">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="p.html">Products</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
     <header>
-        <h1>Discover the Best Deals</h1>
-        <p>Exclusive Amazon Offers, Just for You.</p>
-        <a href="p.html" class="cta-button">Shop Now</a>
+        <nav>
+            <div class="logo">MyShop</div>
+            <button class="menu-toggle">&#9776;</button>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Featured Products -->
-    <section class="container">
-        <h2>Featured Products</h2>
-        <div class="product-list">
-            <div class="product">
-                <img src="https://m.media-amazon.com/images/I/71OFKtclW4L._SX679_.jpg" alt="Product Image">
-                <h3>GIGABYTE NVIDIA GeForce RTX</h3>
-                <a href="https://m.media-amazon.com/images/I/71OFKtclW4L._AC_UY218_.jpg" class="buy-btn">Buy Now</a>
-            </div>
-            <div class="product">
-                <img src="product.jpg" alt="Product Image">
-                <h3>Product Name</h3>
-                <a href="#" class="buy-btn">Buy Now</a>
-            </div>
+    <section class="product">
+        <div class="product-image">
+            <img src="https://m.media-amazon.com/images/I/71OFKtclW4L._AC_UY218_.jpg" alt="Product Image">
+        </div>
+        <div class="product-details">
+            <h1>RTX NEW GEN</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <span class="price">$99.99</span>
+            <button class="buy-btn">Buy Now</button>
         </div>
     </section>
 
-    <!-- About Us Section -->
-<div class="about-us">
-    <h2>About Us</h2>
-    <p>We handpick the best Amazon deals to save you time and money.</p>
-    <a href="about.html" class="learn-more">Learn More</a>
-</div>
-
-<!-- Contact Us Section -->
-<div class="contact-us">
-    <h2>Contact Us</h2>
-    <p>Have questions? We’d love to hear from you!</p>
-    <a href="contact.html" class="contact-btn">Get in Touch</a>
-</div>
-
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2024 Affiliate Store. All rights reserved.</p>
-    </footer>
-   <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
