@@ -35,11 +35,11 @@ document.addEventListener("DOMContentLoaded", async function () {
             card.style.animationDelay = `${index * 0.1}s`; // staggered animation effect
 
             card.innerHTML = `
-                <img src="${product.img}" alt="${product.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/150';">
+                <img src="${product.img}" alt="${product.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/150';" onclick="openModal('${product.img}')">
                 <h3>${product.name}</h3>
                 <p><strong>Price:</strong> ${product.price}</p>
                 <p class="rating">⭐ ${product.rating}</p>
-                <a href="${product.link}" target="_blank" class="buy-btn">Buy Now</a>
+                <a href="${product.link}" target="_blank" class="buy-btn" aria-label="Buy ${product.name} for ${product.price}">Buy Now</a>
             `;
 
             productContainer.appendChild(card);
@@ -57,4 +57,34 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Fetch products on page load
     fetchProducts();
+});
+
+// Open the modal and set the image source
+function openModal(imageSrc) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    modal.style.display = 'flex';
+    modalImage.src = imageSrc;
+    modal.focus(); // For accessibility, focus on the modal
+}
+
+// Close the modal
+function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.style.display = 'none';
+}
+
+// Close the modal when clicking outside the image
+window.onclick = function(event) {
+    const modal = document.getElementById('imageModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+};
+
+// Close the modal with the Escape key for accessibility
+document.getElementById('imageModal').addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
 });
