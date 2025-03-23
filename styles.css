@@ -284,3 +284,29 @@ footer {
     background: #FFD95A;
     transform: scale(1.1);
 }
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centers the containers */
+    gap: 20px; /* Adds spacing between containers */
+}
+
+.product-box {
+    width: 250px; /* Fixed width for consistency */
+    padding: 15px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: hidden; /* Prevents content overflow */
+}
+
+.product-box img {
+    width: 100%; /* Ensures it fits inside the container */
+    height: 150px; /* Uniform height */
+    object-fit: contain; /* Keeps the whole image visible */
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+}
