@@ -3,59 +3,98 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
 }
 
-/* Body Styling */
 body {
-    background: #121212;  /* Dark Theme */
-    color: #fff;
-    text-align: center;
+    font-family: 'Poppins', sans-serif; /* Match the font of the other pages */
+    background: #f4f6f9; /* Match the background color of the other pages */
+    color: #222831; /* Match the text color of the other pages */
 }
 
-/* Navigation Bar */
-.nav {
-    background: #1e1e1e;
-    padding: 15px;
+/* Navbar */
+.navbar {
+    background: #4C89F3; /* Match the navbar color of the other pages */
+    padding: 15px 20px;
+    position: fixed; /* Match the fixed navbar of the other pages */
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
 }
 
-.navul {
-    display: inline;
+.nav-links li {
+    margin: 0 15px;
 }
 
-.lk {
-    color: cyan;
+.nav-links a {
+    color: white;
     text-decoration: none;
     font-size: 18px;
-    font-weight: bold;
-    padding: 8px 15px;
-    transition: 0.3s;
+    padding: 8px 12px;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
 }
 
-.lk:hover {
-    color: #ffbb00;
+.nav-links a:hover,
+.nav-links .active {
+    background: #FFCC29; /* Match the hover color of the other pages */
+    color: #222831;
+    box-shadow: 0px 2px 6px rgba(255, 204, 41, 0.6);
+    transform: translateY(-2px);
 }
 
-/* Contact Form */
+/* Contact Section */
+.contact-section {
+    text-align: center;
+    padding: 100px 20px 50px; /* Extra padding-top to account for fixed navbar */
+}
+
 .contact-heading {
-    font-size: 28px;
+    font-size: 2.5rem; /* Match the heading size of the other pages */
     margin: 40px 0 20px;
-    color: cyan;
+    color: #222831; /* Match the text color of the other pages */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: fadeIn 1s ease-in-out; /* Match the animation of the other pages */
 }
 
 /* Contact Form Container */
 .contact-form {
-    background: #1e1e1e;
+    background: linear-gradient(145deg, #f9f9f9, #e8ecef); /* Match the gradient background of the other pages */
     width: 90%;
     max-width: 500px;
     margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.2);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.contact-form:hover {
+    transform: scale(1.02); /* Subtle scale-up on hover to make the form "pop" */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 20px;
 }
 
 /* Form Labels */
@@ -64,6 +103,7 @@ body {
     text-align: left;
     margin: 10px 0 5px;
     font-weight: bold;
+    color: #222831;
 }
 
 /* Input Fields */
@@ -71,12 +111,18 @@ body {
 .contact-textarea {
     width: 100%;
     padding: 10px;
-    border: none;
+    border: 2px solid #4C89F3; /* Match the border color with the primary color */
     border-radius: 5px;
     font-size: 16px;
-    background: #222;
-    color: white;
-    border: 1px solid cyan;
+    background: #fff;
+    color: #222831;
+    transition: 0.3s ease;
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+    border-color: #FFCC29; /* Match the focus color with the accent color */
+    outline: none;
 }
 
 /* Textarea */
@@ -87,32 +133,84 @@ body {
 /* Submit Button */
 .contact-btn {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-top: 15px;
     border: none;
-    background: cyan;
-    color: black;
+    background: #4C89F3; /* Match the button color of the other pages */
+    color: white;
     font-size: 18px;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 8px; /* Match the border-radius of the other pages */
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }
 
 .contact-btn:hover {
-    background: #ffbb00;
+    background: #FFCC29; /* Match the hover color of the other pages */
+    color: #222831;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(255, 204, 41, 0.4);
+}
+
+.contact-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    margin-top: 10px;
+    color: #4C89F3;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #222831; /* Match the footer background of the other pages */
+    color: white;
+    margin-top: 50px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 /* Responsive Design */
-@media (max-width: 600px) {
-    .nav {
+@media (max-width: 768px) {
+    .navbar {
         flex-direction: column;
         text-align: center;
+        position: static; /* Remove fixed positioning for mobile to avoid overlap */
     }
 
-    .lk {
-        display: block;
-        padding: 10px 0;
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
     }
 
     .contact-form {
