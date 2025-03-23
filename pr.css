@@ -4,53 +4,76 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f4f4f8;
-    color: #333;
+    background-color: #f4f6f9; /* Match the background color of the first page */
+    color: #222831; /* Match the text color of the first page */
 }
 
 /* Navbar */
 .navbar {
-    background: linear-gradient(90deg, #6a11cb, #2575fc);
-    color: white;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    background: #4C89F3; /* Match the navbar color of the first page */
+    padding: 15px 20px;
+    position: fixed; /* Match the fixed navbar of the first page */
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
 }
+
 .navbar .logo {
     font-size: 22px;
     font-weight: bold;
+    color: white;
 }
+
 .navbar ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
 }
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
 .navbar ul li a {
     color: white;
     text-decoration: none;
-    font-weight: 500;
-    transition: 0.3s ease;
+    font-size: 18px;
+    padding: 8px 12px;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
 }
+
 .navbar ul li a:hover {
-    color: #ffeb3b;
+    background: #FFCC29; /* Match the hover color of the first page */
+    color: #222831;
+    box-shadow: 0px 2px 6px rgba(255, 204, 41, 0.6);
+    transform: translateY(-2px);
 }
 
 /* Hero */
 .hero {
-    background: linear-gradient(to right, #1e3c72, #2a5298);
+    background: linear-gradient(135deg, #4C89F3, #1E3A5F); /* Match the hero gradient of the first page */
     color: white;
-    padding: 60px 20px;
+    padding: 120px 20px; /* Match the padding of the first page */
     text-align: center;
     border-radius: 0 0 30px 30px;
+    animation: fadeIn 1s ease-in-out; /* Match the animation of the first page */
 }
+
 .hero h1 {
-    font-size: 36px;
-    font-weight: bold;
+    font-size: 2.5rem; /* Match the font size of the first page */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
+
 .hero p {
     font-size: 18px;
     margin-top: 10px;
@@ -61,16 +84,18 @@ body {
     text-align: center;
     margin: 30px 0 10px;
 }
+
 #categoryFilter {
     padding: 10px 15px;
     font-size: 16px;
     border-radius: 8px;
-    border: 2px solid #2575fc;
+    border: 2px solid #4C89F3; /* Match the border color with the navbar */
     outline: none;
     transition: 0.3s ease;
 }
+
 #categoryFilter:focus {
-    border-color: #6a11cb;
+    border-color: #FFCC29; /* Match the focus color with the hover color */
 }
 
 /* Products Grid */
@@ -85,30 +110,48 @@ body {
 
 /* Product Card */
 .product-card {
-    background: #fff;
+    background: linear-gradient(145deg, #f9f9f9, #e8ecef); /* Match the gradient background of the first page */
     padding: 25px 20px;
     border-radius: 15px;
     text-align: center;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease-in-out;
 }
+
 .product-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
+
 .product-card img {
-    width: 120px;
-    height: 120px;
+    width: 100%;
+    max-width: 150px; /* Slightly larger than the original to match the first page */
+    height: auto;
     object-fit: contain;
     margin-bottom: 15px;
+    border: 2px solid #ddd; /* Add a subtle border to make the image pop */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow */
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+    cursor: pointer; /* Indicate the image is clickable */
 }
+
+.product-card img:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+    filter: brightness(1.1); /* Slightly brighten the image on hover */
+}
+
 .product-card h3 {
     font-size: 20px;
     margin-bottom: 8px;
+    color: #222831; /* Match the text color of the first page */
 }
+
 .product-card p {
     font-size: 16px;
+    color: #555; /* Match the secondary text color of the first page */
 }
+
 .rating {
     color: #ffb400;
     font-size: 18px;
@@ -118,18 +161,55 @@ body {
 /* Buy Button */
 .buy-btn {
     display: inline-block;
-    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    background: #4C89F3; /* Match the button color of the first page */
     color: white;
     padding: 10px 20px;
-    border-radius: 30px;
+    border-radius: 8px; /* Match the border-radius of the first page */
     font-weight: bold;
     margin-top: 12px;
-    transition: 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     text-decoration: none;
 }
+
 .buy-btn:hover {
-    background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    background: #FFCC29; /* Match the hover color of the first page */
+    color: #222831;
     transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(255, 204, 41, 0.4);
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.close:hover {
+    color: #FFCC29; /* Match the hover color of the first page */
 }
 
 /* Animation */
@@ -137,6 +217,7 @@ body {
     opacity: 0;
     animation: fadeInUp 0.6s ease forwards;
 }
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -156,15 +237,32 @@ body {
     color: #666;
 }
 
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #222831; /* Match the footer background of the first page */
+    color: white;
+    margin-top: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
 /* Responsive Nav */
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
         text-align: center;
+        position: static; /* Remove fixed positioning for mobile to avoid overlap */
     }
+
     .navbar ul {
         flex-direction: column;
         gap: 10px;
         margin-top: 10px;
+    }
+
+    .product-card img {
+        max-width: 120px; /* Smaller image on mobile */
     }
 }
