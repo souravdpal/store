@@ -7,7 +7,7 @@ const firebaseConfig = {
     apiKey: "AIzaSyA3_Otys41HjaAnDG8f2jFuzzuUJTiF-Po",
     authDomain: "store-work-10c7d.firebaseapp.com",
     projectId: "store-work-10c7d",
-    storageBucket: "store-work-10c7d.appspot.com", // Fixed storage bucket URL
+    storageBucket: "store-work-10c7d.appspot.com",
     messagingSenderId: "364380068504",
     appId: "1:364380068504:web:fe303c05a95bb777b6ceed",
     measurementId: "G-DSG9XHW38R"
@@ -24,10 +24,9 @@ document.querySelector(".google-btn").addEventListener("click", () => {
         .then((result) => {
             console.log("User signed in:", result.user);
             alert(`Welcome, ${result.user.displayName}`);
-            window.location.href = "home.html";  // Redirect to home page after login
+            window.location.href = "https://souravdpal.github.io/store/home.html";  // Redirect to GitHub Pages URL
         })
         .catch((error) => {
             console.error("Error during Google sign-in:", error);
         });
 });
-
