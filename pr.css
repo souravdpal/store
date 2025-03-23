@@ -1,15 +1,21 @@
 /* 🌟 General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #f4f4f9;
-    color: #222;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* 🔵 Navbar Styling */
+body {
+    background: #f8f9fa;
+    color: #333;
+    padding: 0;
+    margin: 0;
+}
+
+/* 🔷 Navbar Styling */
 .navbar {
-    background: #1e1eaa;
+    background: #4a148c;
     padding: 15px 0;
     text-align: center;
 }
@@ -17,106 +23,133 @@ body {
 .navbar a {
     color: white;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px;
     margin: 0 15px;
-    transition: color 0.3s ease-in-out;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
 .navbar a:hover {
     color: #ffcc00;
 }
 
-/* 🔥 Deals Section */
-.deals-container {
+/* 🎯 Hero Section */
+.hero {
+    background: linear-gradient(to right, #4a90e2, #1e3c72);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    border-radius: 0 0 30px 30px;
+}
+
+.hero h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.hero .shop-btn {
+    background: #ffcc00;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.hero .shop-btn:hover {
+    background: #ffb300;
+    transform: scale(1.05);
+}
+
+/* 📦 Product Cards */
+.products-container {
     display: flex;
     justify-content: center;
-    gap: 30px;
     flex-wrap: wrap;
+    gap: 30px;
     padding: 50px 20px;
 }
 
-/* 🎁 Sexy Product Cards */
-.deal-card {
-    width: 280px;
+/* 💎 Individual Product Card */
+.product-card {
+    width: 320px;
     background: white;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
     text-align: center;
     position: relative;
-    overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* 🌀 Hover Animation */
-.deal-card:hover {
-    transform: translateY(-8px);
+.product-card:hover {
+    transform: translateY(-5px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* 📷 Product Image */
-.deal-card img {
-    width: 120px;
-    height: 120px;
+.product-card img {
+    width: 150px;
+    height: 150px;
     object-fit: contain;
-    margin-bottom: 10px;
-    transition: transform 0.3s ease-in-out;
-}
-
-/* 🚀 Image Hover Effect */
-.deal-card:hover img {
-    transform: scale(1.1);
+    margin-bottom: 15px;
+    transition: 0.3s ease-in-out;
 }
 
 /* 🏷️ Product Title */
-.deal-card h3 {
+.product-card h3 {
     font-size: 20px;
     font-weight: bold;
     color: #222;
+    margin-bottom: 5px;
 }
 
 /* 💰 Price Styling */
-.deal-card p {
-    font-size: 16px;
+.product-card p {
+    font-size: 18px;
     font-weight: bold;
     color: #333;
     margin: 8px 0;
 }
 
-/* ⭐ Star Rating */
-.deal-card .rating {
-    color: #ffcc00;
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-/* 🔴 Sexy "Buy Now" Button */
-.deal-card .buy-btn {
+/* 🔴 "Buy Now" Button */
+.product-card .buy-btn {
     background: linear-gradient(45deg, #ff416c, #ff4b2b);
     color: white;
     font-size: 16px;
     font-weight: bold;
-    padding: 12px 18px;
+    padding: 12px 20px;
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 10px rgba(255, 65, 108, 0.3);
+    transition: 0.3s ease-in-out;
 }
 
-/* 💥 Button Hover Effect */
-.deal-card .buy-btn:hover {
+.product-card .buy-btn:hover {
     background: linear-gradient(45deg, #ff4b2b, #ff416c);
     transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(255, 65, 108, 0.5);
 }
 
-/* 🔻 Footer */
-.footer {
-    text-align: center;
-    padding: 20px;
-    background: #1e1eaa;
-    color: white;
-    font-size: 14px;
-    margin-top: 50px;
+/* 📌 Filter Dropdown */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.filter-container select {
+    font-size: 16px;
+    padding: 8px 12px;
+    border: 2px solid #4a148c;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
 }
