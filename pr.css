@@ -1,155 +1,170 @@
-/* 🌟 General Styles */
+/* Reset & Font */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
 }
-
 body {
-    background: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f8;
     color: #333;
-    padding: 0;
-    margin: 0;
 }
 
-/* 🔷 Navbar Styling */
+/* Navbar */
 .navbar {
-    background: #4a148c;
-    padding: 15px 0;
-    text-align: center;
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
-
-.navbar a {
+.navbar .logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.navbar ul li a {
     color: white;
     text-decoration: none;
-    font-size: 18px;
-    margin: 0 15px;
-    font-weight: bold;
-    transition: 0.3s;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+.navbar ul li a:hover {
+    color: #ffeb3b;
 }
 
-.navbar a:hover {
-    color: #ffcc00;
-}
-
-/* 🎯 Hero Section */
+/* Hero */
 .hero {
-    background: linear-gradient(to right, #4a90e2, #1e3c72);
+    background: linear-gradient(to right, #1e3c72, #2a5298);
     color: white;
-    text-align: center;
     padding: 60px 20px;
+    text-align: center;
     border-radius: 0 0 30px 30px;
 }
-
 .hero h1 {
     font-size: 36px;
     font-weight: bold;
 }
-
 .hero p {
     font-size: 18px;
     margin-top: 10px;
 }
 
-.hero .shop-btn {
-    background: #ffcc00;
-    padding: 12px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-}
-
-.hero .shop-btn:hover {
-    background: #ffb300;
-    transform: scale(1.05);
-}
-
-/* 📦 Product Cards */
-.products-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-    padding: 50px 20px;
-}
-
-/* 💎 Individual Product Card */
-.product-card {
-    width: 320px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    padding: 20px;
+/* Filter */
+.filter-container {
     text-align: center;
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 30px 0 10px;
+}
+#categoryFilter {
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid #2575fc;
+    outline: none;
+    transition: 0.3s ease;
+}
+#categoryFilter:focus {
+    border-color: #6a11cb;
 }
 
-/* 🌀 Hover Animation */
+/* Products Grid */
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Product Card */
+.product-card {
+    background: #fff;
+    padding: 25px 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+}
 .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
-
-/* 📷 Product Image */
 .product-card img {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     object-fit: contain;
     margin-bottom: 15px;
-    transition: 0.3s ease-in-out;
 }
-
-/* 🏷️ Product Title */
 .product-card h3 {
     font-size: 20px;
-    font-weight: bold;
-    color: #222;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
-
-/* 💰 Price Styling */
 .product-card p {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin: 8px 0;
-}
-
-/* 🔴 "Buy Now" Button */
-.product-card .buy-btn {
-    background: linear-gradient(45deg, #ff416c, #ff4b2b);
-    color: white;
     font-size: 16px;
-    font-weight: bold;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
+}
+.rating {
+    color: #ffb400;
+    font-size: 18px;
+    margin-top: 5px;
 }
 
-.product-card .buy-btn:hover {
-    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+/* Buy Button */
+.buy-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    margin-top: 12px;
+    transition: 0.3s ease-in-out;
+    text-decoration: none;
+}
+.buy-btn:hover {
+    background: linear-gradient(135deg, #ff4b2b, #ff416c);
     transform: scale(1.05);
 }
 
-/* 📌 Filter Dropdown */
-.filter-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+/* Animation */
+.fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.filter-container select {
-    font-size: 16px;
-    padding: 8px 12px;
-    border: 2px solid #4a148c;
-    border-radius: 5px;
-    outline: none;
-    cursor: pointer;
+/* Loading */
+#loading {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    color: #666;
+}
+
+/* Responsive Nav */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
 }
