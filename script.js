@@ -28,17 +28,35 @@ document.addEventListener("DOMContentLoaded", async function () {
             allAnnouncements = Array.isArray(data) ? data : [];
             console.log("All Announcements:", allAnnouncements);
 
-            // If there are announcements, display the first one
+            // If there are announcements, proceed with display
             if (allAnnouncements.length > 0) {
-                const announcement = allAnnouncements[0]; // Display the first announcement
-                console.log("Displaying Announcement:", announcement);
+                let currentIndex = 0;
 
-                announcementContent.innerHTML = `
-                    <i class="${announcement.icon}"></i>
-                    <span>${announcement.message}</span>
-                    ${announcement.link ? `<a href="${announcement.link}" class="announcement-link">Shop Now</a>` : ""}
-                `;
-                announcementBanner.style.display = "block";
+                // Random Announcement on Initial Load
+                const randomIndex = Math.floor(Math.random() * allAnnouncements.length);
+                currentIndex = randomIndex; // Start with a random announcement
+                console.log("Random Initial Index:", currentIndex);
+
+                // Function to display the current announcement
+                const displayAnnouncement = () => {
+                    const announcement = allAnnouncements[currentIndex];
+                    console.log("Displaying Announcement:", announcement);
+                    announcementContent.innerHTML = `
+                        <i class="${announcement.icon}"></i>
+                        <span>${announcement.message}</span>
+                        ${announcement.link ? `<a href="${announcement.link}" class="announcement-link">Shop Now</a>` : ""}
+                    `;
+                    announcementBanner.style.display = "block";
+                };
+
+                // Display the initial random announcement
+                displayAnnouncement();
+
+                // Cycle Through Announcements Every 5 Seconds
+                setInterval(() => {
+                    currentIndex = (currentIndex + 1) % allAnnouncements.length;
+                    displayAnnouncement();
+                }, 5000);
             } else {
                 console.log("No announcements to display.");
             }
