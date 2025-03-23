@@ -3,33 +3,39 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
 }
 
-/* Body Styling */
 body {
-    background: #f4f4f4;
-    color: #333;
+    font-family: 'Poppins', sans-serif; /* Match the font of the other pages */
+    background: #f4f6f9; /* Match the background color of the other pages */
+    color: #222831; /* Match the text color of the other pages */
 }
 
 /* Navbar */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #0057b3;
+    background: #4C89F3; /* Match the navbar color of the other pages */
     padding: 15px 20px;
-    color: white;
+    position: fixed; /* Match the fixed navbar of the other pages */
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
-    font-size: 1.5rem;
+.navbar .logo {
+    font-size: 22px;
     font-weight: bold;
+    color: white;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links li {
@@ -39,24 +45,39 @@ body {
 .nav-links a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
+    font-size: 18px;
+    padding: 8px 12px;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
 }
 
 .nav-links a:hover,
 .nav-links .active {
-    text-decoration: underline;
-    color: #ffcc00;
+    background: #FFCC29; /* Match the hover color of the other pages */
+    color: #222831;
+    box-shadow: 0px 2px 6px rgba(255, 204, 41, 0.6);
+    transform: translateY(-2px);
 }
 
 /* Hero Section */
 .hero {
     text-align: center;
-    background: linear-gradient(45deg, #0057b3, #0088cc);
-    padding: 60px 20px;
-    font-size: 1.5rem;
-    font-weight: bold;
+    background: linear-gradient(135deg, #4C89F3, #1E3A5F); /* Match the hero gradient of the other pages */
+    padding: 120px 20px; /* Match the padding of the other pages */
     color: white;
+    animation: fadeIn 1s ease-in-out; /* Match the animation of the other pages */
+    border-radius: 0 0 30px 30px;
+}
+
+.hero h1 {
+    font-size: 2.5rem; /* Match the font size of the other pages */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero p {
+    font-size: 18px;
+    margin-top: 10px;
 }
 
 /* About Section */
@@ -72,6 +93,14 @@ body {
     font-size: 1.2rem;
 }
 
+.about-content h2 {
+    font-size: 2rem;
+    color: #222831;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 /* About Cards */
 .about-grid {
     display: flex;
@@ -82,26 +111,84 @@ body {
 }
 
 .about-card {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
+    background: linear-gradient(145deg, #f9f9f9, #e8ecef); /* Match the gradient background of the other pages */
+    padding: 25px;
+    border-radius: 12px;
     width: 300px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .about-card:hover {
-    transform: translateY(-10px);
-    background: #0057b3;
-    color: white;
+    transform: scale(1.05); /* Match the hover effect of the other pages */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(145deg, #e8ecef, #f9f9f9); /* Subtle gradient change on hover */
+}
+
+.about-card h3 {
+    font-size: 1.4rem;
+    color: #222831;
+    margin-bottom: 10px;
+}
+
+.about-card h3 i {
+    margin-right: 8px;
+    color: #4C89F3; /* Match the icon color with the primary color */
+}
+
+.about-card:hover h3 i {
+    color: #FFCC29; /* Change icon color on hover to match the accent color */
+}
+
+.about-card p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Animation */
+.fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Footer */
 footer {
     text-align: center;
     padding: 20px;
-    background: #111;
+    background: #222831; /* Match the footer background of the other pages */
     color: white;
     margin-top: 50px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+/* Responsive Nav */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+        position: static; /* Remove fixed positioning for mobile to avoid overlap */
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
 }
