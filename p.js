@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const productContainer = document.getElementById("product-list");
     const loadingElement = document.getElementById("loading");
     const categoryFilter = document.getElementById("categoryFilter");
+    const searchInput = document.getElementById("searchInput");
 
     // Fetch Data from GitHub JSON
     async function fetchProducts() {
@@ -46,14 +47,36 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
-    // Filter by category
-    categoryFilter.addEventListener("change", function () {
-        const selectedCategory = this.value;
-        const filteredProducts = selectedCategory === "all"
-            ? allProducts
-            : allProducts.filter(product => product.category.toLowerCase() === selectedCategory.toLowerCase());
+    // Apply Filters (Category and Search)
+    function applyFilters() {
+        // Start with all products
+        let filteredProducts = allProducts;
+
+        // Apply category filter
+        const selectedCategory = categoryFilter.value;
+        if (selectedCategory !== "all") {
+            filteredProducts = filteredProducts.filter(product => 
+                product.category.toLowerCase() === selectedCategory.toLowerCase()
+            );
+        }
+
+        // Apply search filter
+        const searchQuery = searchInput.value.trim().toLowerCase();
+        if (searchQuery) {
+            filteredProducts = filteredProducts.filter(product => 
+                product.name.toLowerCase().includes(searchQuery)
+            );
+        }
+
+        // Load the filtered products
         loadProducts(filteredProducts);
-    });
+    }
+
+    // Filter by category
+    categoryFilter.addEventListener("change", applyFilters);
+
+    // Filter by search input
+    searchInput.addEventListener("input", applyFilters);
 
     // Fetch products on page load
     fetchProducts();
