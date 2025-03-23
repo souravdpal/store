@@ -87,6 +87,24 @@ button {
     transform: scale(1.05);
 }
 
+/* Facebook Button */
+.facebook-btn {
+    background: #1877F2;
+    color: white;
+    margin-top: 10px;
+}
+
+.facebook-btn img {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+}
+
+.facebook-btn:hover {
+    background: #145dbf;
+    transform: scale(1.05);
+}
+
 /* Subtle Animation */
 .auth-box {
     animation: fadeIn 0.5s ease-in-out;
