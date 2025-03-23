@@ -31,18 +31,3 @@ document.querySelector(".google-btn").addEventListener("click", () => {
             alert("Google Login Failed!");
         });
 });
-
-// GitHub Authentication
-const githubProvider = new GithubAuthProvider();
-document.querySelector(".github-btn").addEventListener("click", () => {
-    signInWithPopup(auth, githubProvider)
-        .then((result) => {
-            console.log("GitHub User:", result.user);
-            alert(`Welcome, ${result.user.displayName}`);
-            window.location.href = "https://souravdpal.github.io/store/home.html";  // Redirect to home
-        })
-        .catch((error) => {
-            console.error("GitHub Sign-in Error:", error);
-            alert("GitHub Login Failed!");
-        });
-});
