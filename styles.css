@@ -69,8 +69,8 @@ body {
     position: relative;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     animation: slideDown 0.5s ease-in-out;
-    z-index: 1001; /* Increased to be above the navbar */
-    margin-top: 60px; /* Adjusted to appear below the fixed navbar */
+    z-index: 1001;
+    margin-top: 60px;
 }
 
 /* Force display when JavaScript sets display: block */
@@ -141,7 +141,7 @@ body {
 .hero {
     text-align: center;
     background: linear-gradient(135deg, #4C89F3, #1E3A5F);
-    padding: 160px 20px; /* Adjusted for navbar and banner */
+    padding: 160px 20px;
     color: white;
     animation: fadeIn 1s ease-in-out;
     border-radius: 0 0 30px 30px;
@@ -156,6 +156,173 @@ body {
 .hero p {
     font-size: 1.2rem;
     opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #FFCC29;
+    color: #222831;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.hero-btn:hover {
+    background: #e6b800;
+    transform: scale(1.05);
+}
+
+/* Featured Categories Section */
+.featured-categories {
+    padding: 50px 20px;
+    text-align: center;
+    background: #fff;
+}
+
+.featured-categories h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #222831;
+}
+
+.category-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.category-card {
+    background: #f4f6f9;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+}
+
+.category-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.category-card h3 {
+    font-size: 1.5rem;
+    margin: 15px 0;
+    color: #222831;
+}
+
+.category-btn {
+    display: block;
+    padding: 10px;
+    background: #4C89F3;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 0 0 10px 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+.category-btn:hover {
+    background: #1E3A5F;
+}
+
+/* Featured Products Section */
+.featured-products {
+    padding: 50px 20px;
+    text-align: center;
+    background: #f4f6f9;
+}
+
+.featured-products h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #222831;
+}
+
+.product-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 250px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #222831;
+}
+
+.product-card p {
+    font-size: 1rem;
+    margin: 5px 10px;
+    color: #666;
+}
+
+.product-card .rating {
+    color: #FFCC29;
+    margin: 5px 10px;
+}
+
+.product-card .buy-btn {
+    display: block;
+    padding: 10px;
+    background: #FFCC29;
+    color: #222831;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 0 0 10px 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+.product-card .buy-btn:hover {
+    background: #e6b800;
+}
+
+.view-all-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 24px;
+    background: #4C89F3;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.view-all-btn:hover {
+    background: #1E3A5F;
+    transform: scale(1.05);
 }
 
 /* Footer */
@@ -227,8 +394,13 @@ footer {
         font-size: 1rem;
     }
 
-    /* Adjust the announcement banner margin on mobile */
     .announcement-banner {
-        margin-top: 120px; /* Adjusted for mobile navbar height */
+        margin-top: 120px;
+    }
+
+    .category-card,
+    .product-card {
+        width: 100%;
+        max-width: 300px;
     }
 }
