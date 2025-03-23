@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         featuredProductsContainer
     });
 
+    // Temporary: Clear the announcementDismissed flag for testing (remove after testing)
+    localStorage.removeItem("announcementDismissed");
+
     // Check if the announcement has been dismissed
     const isDismissed = localStorage.getItem("announcementDismissed");
     console.log("Is Announcement Dismissed:", isDismissed);
@@ -75,7 +78,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Fetch Featured Products
     try {
-        const response = await fetch("https://raw.githubusercontent.com/souravdpal/data.json/master/data.json");
+        // Updated URL to the correct branch (main instead of master)
+        const response = await fetch("https://raw.githubusercontent.com/souravdpal/data.json/main/data.json");
         if (!response.ok) throw new Error("Failed to fetch products");
         const data = await response.json();
         console.log("Fetched Products:", data);
@@ -91,7 +95,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             card.style.animationDelay = `${index * 0.1}s`;
 
             card.innerHTML = `
-                <img src="${product.img}" alt="${product.name}" onerror="this.onerror=null;this.src='https://via.placeholder.com/150';">
+                <img src="${product.img}" alt="${product.name}" onerror="this.onerror=null;this.src='https://picsum.photos/150?random=${index + 3}';">
                 <h3>${product.name}</h3>
                 <p><strong>Price:</strong> ${product.price}</p>
                 <p class="rating">⭐ ${product.rating}</p>
