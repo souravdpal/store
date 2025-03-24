@@ -36,12 +36,25 @@ document.addEventListener("DOMContentLoaded", async function () {
     const isDismissed = localStorage.getItem("announcementDismissed");
     console.log("Is Announcement Dismissed:", isDismissed);
 
+    // Function to fetch with retries
+    const fetchWithRetries = async (url, retries = 3, delay = 1000) => {
+        for (let i = 0; i < retries; i++) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`Failed to fetch: ${response.status}`);
+                return await response.json();
+            } catch (error) {
+                if (i === retries - 1) throw error; // Last retry failed
+                console.warn(`Fetch attempt ${i + 1} failed, retrying in ${delay}ms...`, error);
+                await new Promise(resolve => setTimeout(resolve, delay));
+            }
+        }
+    };
+
     // Fetch Announcements
     if (!isDismissed) {
         try {
-            const response = await fetch("https://raw.githubusercontent.com/souravdpal/data.json/master/announcements.json");
-            if (!response.ok) throw new Error("Failed to fetch announcements");
-            const data = await response.json();
+            const data = await fetchWithRetries("https://raw.githubusercontent.com/souravdpal/data.json/master/announcements.json");
             console.log("Fetched Announcements:", data);
 
             allAnnouncements = Array.isArray(data) ? data : [];
@@ -79,6 +92,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             }
         } catch (error) {
             console.error("Error fetching announcements:", error);
+            announcementContent.innerHTML = `<span>Unable to load announcements. Please try again later.</span>`;
+            announcementBanner.style.display = "block";
         }
 
         announcementClose.addEventListener("click", () => {
