@@ -12,9 +12,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     const hamburger = document.querySelector(".hamburger");
     const navLinks = document.querySelector(".nav-links");
 
-    // Exchange rate: 1 USD = 83 INR (approximate as of early 2025)
-    const EXCHANGE_RATE = 83;
-
     // Toggle Hamburger Menu
     hamburger.addEventListener("click", () => {
         navLinks.classList.toggle("active");
@@ -151,13 +148,34 @@ document.addEventListener("DOMContentLoaded", async function () {
         allProducts = Array.isArray(data) ? data : [];
         console.log("All Products:", allProducts);
 
-        // Convert prices to rupees and add rupeePrice field
+        // Process prices: Ensure the price is a valid number and format it
         allProducts = allProducts.map(product => {
-            const priceInDollars = parseFloat(product.price.replace(/[^0-9.-]+/g, ""));
-            const priceInRupees = priceInDollars * EXCHANGE_RATE;
+            // Handle the price: Remove any non-numeric characters if necessary and parse as float
+            let price = product.price;
+            
+            // If price is a string, clean it and parse it
+            if (typeof price === "string") {
+                // Remove any non-numeric characters except for the decimal point
+                price = price.replace(/[^0-9.]/g, "");
+                price = parseFloat(price);
+            } else if (typeof price !== "number") {
+                // Fallback if price is not a number or string
+                console.warn(`Invalid price for product ${product.name}: ${product.price}`);
+                price = 0; // Default to 0 if price is invalid
+            }
+
+            // Ensure price is a valid number, otherwise default to 0
+            price = isNaN(price) ? 0 : price;
+
+            // Format the price with commas for the whole number part
+            const formattedPrice = price.toLocaleString("en-IN", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+
             return {
                 ...product,
-                rupeePrice: priceInRupees.toFixed(2)
+                price: formattedPrice // Store the formatted price with commas
             };
         });
 
@@ -171,9 +189,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             card.innerHTML = `
                 <img src="${product.img}" alt="${product.name}" onerror="this.onerror=null;this.src='https://picsum.photos/150?random=${index + 3}';">
                 <h3>${product.name}</h3>
-                <p><strong>Price:</strong> ₹${product.rupeePrice}</p>
+                <p><strong>Price:</strong> ₹${product.price}</p>
                 <p class="rating">⭐ ${product.rating}</p>
-                <a href="${product.link}" target="_blank" class="buy-btn" aria-label="Buy ${product.name} for ₹${product.rupeePrice}">Buy Now</a>
+                <a href="${product.link}" target="_blank" class="buy-btn" aria-label="Buy ${product.name} for ₹${product.price}">Buy Now</a>
             `;
 
             featuredProductsContainer.appendChild(card);
