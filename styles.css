@@ -228,7 +228,8 @@ body {
 .category-card img {
     width: 100%;
     height: 200px;
-    object-fit: cover;
+    object-fit: contain; /* Changed to contain to show the full image */
+    background: #fff; /* Add a white background to fill any empty space */
     transition: opacity 0.5s ease-in-out; /* Smooth transition for image changes */
 }
 
