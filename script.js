@@ -1,11 +1,14 @@
-// Announcement and Featured Products functionality
+// Announcement, Featured Products, and Category Images functionality
 document.addEventListener("DOMContentLoaded", async function () {
     let allAnnouncements = [];
     let allProducts = [];
+    let categoryImages = { electronics: [], books: [] };
     const announcementBanner = document.getElementById("announcementBanner");
     const announcementContent = document.getElementById("announcementContent");
     const announcementClose = document.getElementById("announcementClose");
     const featuredProductsContainer = document.getElementById("featuredProducts");
+    const electronicsImage = document.getElementById("electronicsImage");
+    const booksImage = document.getElementById("booksImage");
     const hamburger = document.querySelector(".hamburger");
     const navLinks = document.querySelector(".nav-links");
 
@@ -24,7 +27,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         announcementBanner,
         announcementContent,
         announcementClose,
-        featuredProductsContainer
+        featuredProductsContainer,
+        electronicsImage,
+        booksImage
     });
 
     // Check if the announcement has been dismissed
@@ -85,9 +90,44 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.log("Announcement dismissed, not showing banner.");
     }
 
+    // Fetch Category Images
+    try {
+        const response = await fetch("https://raw.githubusercontent.com/souravdpal/data.json/master/images.json");
+        if (!response.ok) throw new Error("Failed to fetch category images");
+        const data = await response.json();
+        console.log("Fetched Category Images:", data);
+
+        categoryImages = data;
+
+        // Function to get a random image from an array
+        const getRandomImage = (imageArray) => {
+            if (imageArray && imageArray.length > 0) {
+                const randomIndex = Math.floor(Math.random() * imageArray.length);
+                return imageArray[randomIndex];
+            }
+            return "https://picsum.photos/300/200?random=1"; // Fallback image
+        };
+
+        // Initial image display
+        electronicsImage.src = getRandomImage(categoryImages.electronics);
+        booksImage.src = getRandomImage(categoryImages.books);
+
+        // Update images every 5 seconds with a 1-second delay between categories
+        setInterval(() => {
+            electronicsImage.src = getRandomImage(categoryImages.electronics);
+            setTimeout(() => {
+                booksImage.src = getRandomImage(categoryImages.books);
+            }, 1000); // 1-second delay for Books image
+        }, 5000); // Change every 5 seconds
+    } catch (error) {
+        console.error("Error fetching category images:", error);
+        // Fallback to Unsplash images if fetch fails
+        electronicsImage.src = "https://picsum.photos/300/200?random=1";
+        booksImage.src = "https://picsum.photos/300/200?random=2";
+    }
+
     // Fetch Featured Products
     try {
-        // Updated URL to use the master branch
         const response = await fetch("https://raw.githubusercontent.com/souravdpal/data.json/master/data.json");
         if (!response.ok) throw new Error("Failed to fetch products");
         const data = await response.json();
