@@ -21,12 +21,27 @@ body {
     z-index: 1000;
     transition: all 0.3s ease-in-out;
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar .logo {
     font-size: 22px;
     font-weight: bold;
     color: white;
+}
+
+.hamburger {
+    display: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger:hover {
+    color: #FFCC29;
 }
 
 .nav-links {
@@ -36,6 +51,7 @@ body {
     flex-grow: 1;
     margin: 0;
     padding: 0;
+    transition: all 0.3s ease-in-out;
 }
 
 .nav-links li {
@@ -213,6 +229,7 @@ body {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    transition: opacity 0.5s ease-in-out; /* Smooth transition for image changes */
 }
 
 .category-card h3 {
@@ -317,4 +334,203 @@ body {
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
-    transition: all 0.3s ease-in
+    transition: all 0.3s ease-in-out;
+}
+
+.view-all-btn:hover {
+    background: #1E3A5F;
+    transform: scale(1.05);
+}
+
+/* Error Message */
+.error-message {
+    color: #e74c3c;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #222831;
+    color: white;
+    margin-top: 50px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* Navbar */
+    .navbar {
+        flex-direction: row;
+        padding: 10px 15px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #4C89F3;
+        padding: 10px 0;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .nav-links a {
+        font-size: 16px;
+        padding: 10px;
+        display: block;
+    }
+
+    /* Announcement Banner */
+    .announcement-banner {
+        margin-top: 60px;
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    .announcement-content {
+        font-size: 14px;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .announcement-link {
+        margin-left: 0;
+        margin-top: 5px;
+        padding: 5px 8px;
+        font-size: 14px;
+    }
+
+    .announcement-close {
+        right: 10px;
+        font-size: 16px;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 100px 15px;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    /* Featured Categories Section */
+    .featured-categories {
+        padding: 30px 15px;
+    }
+
+    .featured-categories h2 {
+        font-size: 1.5rem;
+    }
+
+    .category-card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .category-card img {
+        height: 150px;
+    }
+
+    .category-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .category-btn {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    /* Featured Products Section */
+    .featured-products {
+        padding: 30px 15px;
+    }
+
+    .featured-products h2 {
+        font-size: 1.5rem;
+    }
+
+    .product-card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .product-card img {
+        height: 120px;
+    }
+
+    .product-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .product-card p {
+        font-size: 0.9rem;
+    }
+
+    .product-card .buy-btn {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .view-all-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    /* Footer */
+    footer {
+        padding: 15px;
+        font-size: 14px;
+    }
+}
